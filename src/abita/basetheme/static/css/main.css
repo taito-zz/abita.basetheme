@@ -1,0 +1,59 @@
+/*h1 {
+    font-size: 1.8em;
+}
+#visual-portal-wrapper {
+    margin: auto;
+    width: 600px;
+}
+#portal-globalnav {
+    background: none;
+    margin: 0;
+}
+#portal-globalnav li a {
+    padding: 0.5em 1em;
+    border-radius: 10px;
+    margin: 0 0 0.5em;
+}*/
+/* Content */
+/*#content {
+    margin: 1em 0.25em;
+}
+#content h1.documentFirstHeading {
+    border-bottom: 0.2em solid #003366;
+    border-left: 0.4em solid #fb8b00;
+    line-height: 1.1em;
+    margin: 0 0 0.4em;
+    padding: 0.1em 0 0 0.2em;
+}
+#content .documentDescription,
+#content #description {
+    font: normal 1em "Helvetica Neue",Arial,FreeSans,sans-serif;
+    margin: 0 0 0.7em;
+}*/
+/* Contact info*/
+/*.template-contact-info #content .documentDescription {
+    display: none;
+}
+.template-contact-info #content-core {
+    margin: 1em 0 0;
+}
+
+#portal-footer {
+    border-radius: 10px;
+    color: #333;
+    line-height: 1.2em;
+    padding: 1em 3em;
+    text-align: right;
+}
+
+@media screen and (max-width: 600px) {
+    #visual-portal-wrapper {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 300px) {
+    #visual-portal-wrapper {
+        width: 300px;
+    }
+}*/
