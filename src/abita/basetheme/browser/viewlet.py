@@ -4,6 +4,7 @@ from abita.adapter.interfaces import IBaseAdapter
 from abita.basetheme.browser.interfaces import IAbitaBasethemeLayer
 from five import grok
 from plone.app.viewletmanager.manager import OrderedViewletManager
+from plone.memoize.view import memoize
 
 grok.templatedir('viewlets')
 
@@ -36,27 +37,32 @@ class BaseDocumentViewlet(BaseViewlet):
     grok.viewletmanager(PloneSiteViewletManager)
 
     @property
+    @memoize
     def folder(self):
         return self.context.get(self.name)
 
     @property
+    @memoize
     def obj(self):
         adapter = IBaseAdapter(self.folder)
         return adapter.get_object(IATDocument, depth=1)
 
     @property
+    @memoize
     def title(self):
         if self.obj:
             return self.obj.Title()
         return self.folder.Title()
 
     @property
+    @memoize
     def description(self):
         if self.obj:
             return self.obj.Description()
         return self.folder.Description()
 
     @property
+    @memoize
     def text(self):
         if self.obj:
             return self.obj.CookedBody()

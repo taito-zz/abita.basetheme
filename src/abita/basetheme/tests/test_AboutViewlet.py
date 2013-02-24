@@ -22,7 +22,11 @@ class AboutViewletTestCase(IntegrationTestCase):
 
     def create_instance(self):
         from abita.basetheme.browser.viewlet import AboutViewlet
-        return AboutViewlet(self.portal, TestRequest(), manager=None, view=None)
+        from zope.annotation.interfaces import IAttributeAnnotatable
+        from zope.interface import directlyProvides
+        request = TestRequest()
+        directlyProvides(request, IAttributeAnnotatable)
+        return AboutViewlet(self.portal, request, manager=None, view=None)
 
     def test_folder(self):
         instance = self.create_instance()
