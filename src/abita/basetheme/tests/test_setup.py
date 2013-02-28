@@ -106,10 +106,6 @@ class TestCase(IntegrationTestCase):
         resource = get_css_resource(self.portal, '++resource++abita.basetheme/css/extra.css')
         self.assertIsNone(resource.getTitle())
 
-    def test_metadata__dependency__abita_adapter(self):
-        installer = getToolByName(self.portal, 'portal_quickinstaller')
-        self.assertTrue(installer.isProductInstalled('abita.adapter'))
-
     def test_metadata__version(self):
         setup = getToolByName(self.portal, 'portal_setup')
         self.assertEqual(

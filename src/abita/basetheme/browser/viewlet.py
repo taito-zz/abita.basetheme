@@ -1,6 +1,6 @@
 from Products.ATContentTypes.interfaces.document import IATDocument
 from Products.CMFPlone.interfaces.siteroot import IPloneSiteRoot
-from abita.adapter.interfaces import IBaseAdapter
+from collective.base.interfaces import IBaseAdapter
 from abita.basetheme.browser.interfaces import IAbitaBasethemeLayer
 from five import grok
 from plone.app.viewletmanager.manager import OrderedViewletManager

@@ -1,9 +1,5 @@
-/*h1 {
+h1 {
     font-size: 1.8em;
-}
-#visual-portal-wrapper {
-    margin: auto;
-    width: 600px;
 }
 #portal-globalnav {
     background: none;
@@ -13,8 +9,11 @@
     padding: 0.5em 1em;
     border-radius: 10px;
     margin: 0 0 0.5em;
-}*/
+}
 /* Content */
+#content h1 a:link {
+    border: none;
+}
 /*#content {
     margin: 1em 0.25em;
 }
@@ -30,8 +29,9 @@
     font: normal 1em "Helvetica Neue",Arial,FreeSans,sans-serif;
     margin: 0 0 0.7em;
 }*/
+
 /* Contact info*/
-/*.template-contact-info #content .documentDescription {
+.template-contact-info #content .documentDescription {
     display: none;
 }
 .template-contact-info #content-core {
@@ -46,7 +46,7 @@
     text-align: right;
 }
 
-@media screen and (max-width: 600px) {
+/*@media screen and (max-width: 600px) {
     #visual-portal-wrapper {
         width: 100%;
     }

@@ -6,7 +6,7 @@ from plone.app.testing import TEST_USER_ID
 
 
 class AboutViewletTestCase(IntegrationTestCase):
-    """Test for AboutViewlet"""
+    """TestCase for AboutViewlet"""
 
     def setUp(self):
         self.portal = self.layer['portal']
