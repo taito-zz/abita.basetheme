@@ -1,3 +1,6 @@
 #about h1 {
     display: none;
 }
+img.border-none {
+    border: none;
+}
