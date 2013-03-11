@@ -1,6 +1,6 @@
 from Products.ATContentTypes.interfaces.document import IATDocument
 from Products.CMFPlone.interfaces.siteroot import IPloneSiteRoot
-from collective.base.interfaces import IBaseAdapter
+from collective.base.interfaces import IAdapter
 from abita.basetheme.browser.interfaces import IAbitaBasethemeLayer
 from five import grok
 from plone.app.viewletmanager.manager import OrderedViewletManager
@@ -44,7 +44,7 @@ class BaseDocumentViewlet(BaseViewlet):
     @property
     @memoize
     def obj(self):
-        adapter = IBaseAdapter(self.folder)
+        adapter = IAdapter(self.folder)
         return adapter.get_object(IATDocument, depth=1)
 
     @property

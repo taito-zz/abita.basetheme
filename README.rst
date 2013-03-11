@@ -7,6 +7,11 @@ abita.basetheme is base theme package for ABITA and Santa site.
 Changelog
 ---------
 
+0.2.3 (2013-03-11)
+==================
+
+- Update imports. [taito]
+
 0.2.2 (2013-03-04)
 ==================
 
