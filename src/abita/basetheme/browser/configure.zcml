@@ -9,4 +9,20 @@
     directory="overrides"
     layer=".interfaces.IAbitaBasethemeLayer" />
 
+  <browser:viewlet
+    class=".viewlet.TitleViewlet"
+    layer=".interfaces.IAbitaBasethemeLayer"
+    manager="plone.app.layout.viewlets.interfaces.IHtmlHead"
+    name="plone.htmlhead.title"
+    permission="zope2.View"
+    />
+
+  <browser:viewlet
+    class=".viewlet.DublinCoreViewlet"
+    layer=".interfaces.IAbitaBasethemeLayer"
+    manager="plone.app.layout.viewlets.interfaces.IHtmlHead"
+    name="plone.htmlhead.dublincore"
+    permission="zope2.View"
+    />
+
 </configure>
