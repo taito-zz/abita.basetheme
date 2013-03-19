@@ -7,10 +7,11 @@ abita.basetheme is base theme package for ABITA and Santa site.
 Changelog
 ---------
 
-0.3 (2013-03-18)
+0.3 (2013-03-19)
 ================
 
 - Overrode TitleViewlet and DublinCoreViewlet for multilingual site. [taito]
+- Tested with Plone-4.2.5. [taito]
 
 0.2.3 (2013-03-11)
 ==================
@@ -41,4 +42,3 @@ Changelog
 ==================
 
 - Initial release. [taito]
-
