@@ -24,6 +24,7 @@ h2 {
 
 #content .documentDescription,
 #content #description {
+    color: #333333;
     font: normal 1em "Helvetica Neue",Arial,FreeSans,sans-serif;
     margin: 0 0 0.7em;
 }
