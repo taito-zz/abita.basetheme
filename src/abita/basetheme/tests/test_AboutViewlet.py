@@ -30,40 +30,40 @@ class AboutViewletTestCase(IntegrationTestCase):
 
     def test_folder(self):
         instance = self.create_instance()
-        self.assertEqual(instance.folder, self.portal['about'])
+        self.assertEqual(instance.folder(), self.portal['about'])
 
     def test_obj__folder(self):
         instance = self.create_instance()
-        self.assertIsNone(instance.obj)
+        self.assertEqual(instance.obj(), self.portal['about'])
 
     def test_obj__doc(self):
         instance = self.create_instance()
         self.create_doc()
-        self.assertEqual(instance.obj, self.portal['about']['en'])
+        self.assertEqual(instance.obj(), self.portal['about']['en'])
 
     def test_title__folder(self):
         instance = self.create_instance()
-        self.assertEqual(instance.title, 'Äböut')
+        self.assertEqual(instance.title(), 'Äböut')
 
     def test_title__doc(self):
         instance = self.create_instance()
         self.create_doc()
-        self.assertEqual(instance.title, 'English')
+        self.assertEqual(instance.title(), 'English')
 
     def test_description__folder(self):
         instance = self.create_instance()
-        self.assertEqual(instance.description, 'Description of Äböut')
+        self.assertEqual(instance.description(), 'Description of Äböut')
 
     def test_description__doc(self):
         instance = self.create_instance()
         self.create_doc()
-        self.assertEqual(instance.description, 'Description of English')
+        self.assertEqual(instance.description(), 'Description of English')
 
     def test_text__folder(self):
         instance = self.create_instance()
-        self.assertIsNone(instance.text)
+        self.assertIsNone(instance.text())
 
     def test_text__doc(self):
         instance = self.create_instance()
         self.create_doc()
-        self.assertEqual(instance.text, '<p>Text of English</p>')
+        self.assertEqual(instance.text(), '<p>Text of English</p>')

@@ -7,7 +7,7 @@
   xmlns:tal="http://xml.zope.org/namespaces/tal">
   <body>
     <metal:main fill-slot="main">
-      <div tal:replace="structure provider:abita.basetheme.plonesite.manager" />
+      <div tal:replace="structure provider:abita.basetheme.viewletmanager.plone-site" />
     </metal:main>
   </body>
 </html>

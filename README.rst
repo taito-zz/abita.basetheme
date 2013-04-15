@@ -7,6 +7,13 @@ abita.basetheme is base theme package for ABITA and Santa site.
 Changelog
 ---------
 
+0.4 (2013-04-15)
+================
+
+- Moved test package to extras_require. [taito]
+- Removed dependency from five.grok. [taito]
+- Tested with Plone-4.3. [taito]
+
 0.3.1 (2013-03-21)
 ==================
 

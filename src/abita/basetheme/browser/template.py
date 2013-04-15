@@ -1,19 +1,8 @@
-from Products.CMFPlone.interfaces.siteroot import IPloneSiteRoot
-from abita.basetheme.browser.interfaces import IAbitaBasethemeLayer
-from five import grok
-
-grok.templatedir('templates')
+from Products.Five import BrowserView
+from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 
-class BaseView(grok.View):
-    """Base view"""
-    grok.baseclass()
-    grok.layer(IAbitaBasethemeLayer)
-    grok.require('zope2.View')
-
-
-class PloneSiteView(BaseView):
+class PloneSiteView(BrowserView):
     """View for Plone Site"""
-    grok.context(IPloneSiteRoot)
-    grok.name('abita-view')
-    grok.template('plone-site')
+
+    __call__ = ViewPageTemplateFile('templates/plone-site.pt')

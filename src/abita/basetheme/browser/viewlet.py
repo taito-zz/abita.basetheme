@@ -1,81 +1,47 @@
 from Products.ATContentTypes.interfaces.document import IATDocument
 from Products.ATContentTypes.interfaces.folder import IATFolder
 from Products.CMFPlone.interfaces.siteroot import IPloneSiteRoot
-from abita.basetheme.browser.interfaces import IAbitaBasethemeLayer
+from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from collective.base.interfaces import IAdapter
-from five import grok
 from plone.app.layout.viewlets.common import DublinCoreViewlet as BaseDublinCoreViewlet
 from plone.app.layout.viewlets.common import TitleViewlet as BaseTitleViewlet
-from plone.app.viewletmanager.manager import OrderedViewletManager
+from plone.app.layout.viewlets.common import ViewletBase
 from plone.memoize.view import memoize
 
 
-grok.templatedir('viewlets')
-
-
-class BaseViewletManager(OrderedViewletManager, grok.ViewletManager):
-    """Base viewlet manager"""
-    grok.baseclass()
-    grok.layer(IAbitaBasethemeLayer)
-
-
-class PloneSiteViewletManager(BaseViewletManager):
-    """Viewlet manager for Plone Site"""
-    grok.context(IPloneSiteRoot)
-    grok.name('abita.basetheme.plonesite.manager')
-
-
-class BaseViewlet(grok.Viewlet):
-    """Base viewlet"""
-    grok.baseclass()
-    grok.layer(IAbitaBasethemeLayer)
-    grok.require('zope2.View')
-
-
-class BaseDocumentViewlet(BaseViewlet):
+class BaseDocumentViewlet(ViewletBase):
     """Base document viewlet"""
     name = ''
-    grok.baseclass()
-    grok.context(IPloneSiteRoot)
-    grok.template('document')
-    grok.viewletmanager(PloneSiteViewletManager)
 
-    @property
+    index = ViewPageTemplateFile('viewlets/document.pt')
+
     @memoize
     def folder(self):
         return self.context.get(self.name)
 
-    @property
     @memoize
     def obj(self):
-        adapter = IAdapter(self.folder)
-        return adapter.get_object(IATDocument, depth=1)
+        folder = self.folder()
+        adapter = IAdapter(folder)
+        return adapter.get_object(IATDocument, depth=1) or folder
 
-    @property
     @memoize
     def title(self):
-        if self.obj:
-            return self.obj.Title()
-        if self.folder:
-            return self.folder.Title()
+        return self.obj().Title()
 
-    @property
     @memoize
     def description(self):
-        if self.obj:
-            return self.obj.Description()
-        return self.folder.Description()
+        return self.obj().Description()
 
-    @property
     @memoize
     def text(self):
-        if self.obj:
-            return self.obj.CookedBody()
+        if hasattr(self.obj(), 'CookedBody'):
+            return self.obj().CookedBody()
 
 
 class AboutViewlet(BaseDocumentViewlet):
+    """Viewlet: abita.basetheme.viewlet.about"""
     name = 'about'
-    grok.name('abita.basetheme.about')
 
 
 class TitleViewlet(BaseTitleViewlet):
