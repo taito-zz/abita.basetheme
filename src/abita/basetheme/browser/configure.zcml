@@ -9,6 +9,12 @@
     directory="overrides"
     layer=".interfaces.IAbitaBasethemeLayer" />
 
+  <browser:resourceDirectory
+    name="abita.basetheme"
+    directory="static"
+    layer=".interfaces.IAbitaBasethemeLayer"
+    />
+
   <browser:page
     class=".template.PloneSiteView"
     for="Products.CMFPlone.interfaces.siteroot.IPloneSiteRoot"
