@@ -1,11 +1,11 @@
 <configure
   i18n_domain="abita.basetheme"
   xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
-  xmlns:i18n="http://namespaces.zope.org/i18n"
   xmlns="http://namespaces.zope.org/zope">
 
   <include package="collective.base"/>
   <include package=".browser" />
+  <include file="upgrades.zcml"/>
 
   <genericsetup:registerProfile
     description="Installs the abita.basetheme package"

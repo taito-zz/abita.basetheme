@@ -1,0 +1,16 @@
+<configure
+  i18n_domain="abita.basetheme"
+  xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+  xmlns="http://namespaces.zope.org/zope">
+
+  <genericsetup:upgradeStep
+    description=""
+    destination="1"
+    handler="abita.basetheme.upgrades.reimport_viewlets"
+    profile="abita.basetheme:default"
+    sortkey="1"
+    source="0"
+    title="Reimport viewlets"
+    />
+
+</configure>

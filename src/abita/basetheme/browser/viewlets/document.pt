@@ -1,4 +1,4 @@
-<section tal:attributes="id view/name" tal:condition="view/folder">
-  <h1 tal:content="view/title" />
-  <div tal:replace="structure view/text" />
+<section tal:attributes="id view/name" tal:condition="view/available">
+  <p tal:condition="view/description" tal:content="view/description" />
+  <div tal:condition="view/text" tal:replace="structure view/text" />
 </section>

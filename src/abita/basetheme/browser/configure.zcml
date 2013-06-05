@@ -15,46 +15,26 @@
     layer=".interfaces.IAbitaBasethemeLayer"
     />
 
+  <!-- View -->
+
   <browser:page
-    class=".template.PloneSiteView"
-    for="Products.CMFPlone.interfaces.siteroot.IPloneSiteRoot"
+    class=".view.NavigationRootView"
+    for="plone.app.layout.navigation.interfaces.INavigationRoot"
     layer=".interfaces.IAbitaBasethemeLayer"
     name="abita-view"
     permission="zope2.View"
     />
 
-  <browser:viewlet
-    class=".viewlet.TitleViewlet"
-    layer=".interfaces.IAbitaBasethemeLayer"
-    manager="plone.app.layout.viewlets.interfaces.IHtmlHead"
-    name="plone.htmlhead.title"
-    permission="zope2.View"
-    />
-
-  <browser:viewlet
-    class=".viewlet.DublinCoreViewlet"
-    layer=".interfaces.IAbitaBasethemeLayer"
-    manager="plone.app.layout.viewlets.interfaces.IHtmlHead"
-    name="plone.htmlhead.dublincore"
-    permission="zope2.View"
-    />
-
-  <browser:viewletManager
-    class="plone.app.viewletmanager.manager.OrderedViewletManager"
-    for="Products.CMFPlone.interfaces.siteroot.IPloneSiteRoot"
-    layer=".interfaces.IAbitaBasethemeLayer"
-    name="abita.basetheme.viewletmanager.plone-site"
-    permission="zope2.View"
-    provides=".interfaces.IPloneSiteViewletManager"
-    />
+  <!-- Viewlet -->
 
   <browser:viewlet
     class=".viewlet.AboutViewlet"
-    for="Products.CMFPlone.interfaces.siteroot.IPloneSiteRoot"
+    for="plone.app.layout.navigation.interfaces.INavigationRoot"
     layer=".interfaces.IAbitaBasethemeLayer"
-    manager=".interfaces.IPloneSiteViewletManager"
+    manager="collective.base.interfaces.IBaseViewViewletManager"
     name="abita.basetheme.viewlet.about"
     permission="zope2.View"
+    view=".interfaces.INavigationRootView"
     />
 
 </configure>

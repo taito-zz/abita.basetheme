@@ -23,7 +23,6 @@ setup(
     include_package_data=True,
     zip_safe=False,
     install_requires=[
-        'abita.utils',
         'collective.base',
         'setuptools',
         'z3c.jbot'],

@@ -1,79 +1,60 @@
 from Products.ATContentTypes.interfaces.document import IATDocument
-from Products.ATContentTypes.interfaces.folder import IATFolder
-from Products.CMFPlone.interfaces.siteroot import IPloneSiteRoot
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
+from abita.basetheme.browser.interfaces import IAboutViewlet
+from abita.basetheme.browser.interfaces import IBaseDocumentViewlet
 from collective.base.interfaces import IAdapter
-from plone.app.layout.viewlets.common import DublinCoreViewlet as BaseDublinCoreViewlet
-from plone.app.layout.viewlets.common import TitleViewlet as BaseTitleViewlet
-from plone.app.layout.viewlets.common import ViewletBase
+from collective.base.viewlet import Viewlet
 from plone.memoize.view import memoize
+from zope.interface import implements
 
 
-class BaseDocumentViewlet(ViewletBase):
+class BaseDocumentViewlet(Viewlet):
     """Base document viewlet"""
-    name = ''
-
+    implements(IBaseDocumentViewlet)
     index = ViewPageTemplateFile('viewlets/document.pt')
+    name = None
 
     @memoize
-    def folder(self):
-        return self.context.get(self.name)
+    def available(self):
+        """Return True or False
+
+        :rtype: bool
+        """
+        if self.obj():
+            return True
+        else:
+            return False
 
     @memoize
     def obj(self):
-        folder = self.folder()
-        adapter = IAdapter(folder)
-        return adapter.get_object(IATDocument, depth=1) or folder
+        """Return ATDocument object
 
-    @memoize
-    def title(self):
-        return self.obj().Title()
+        :rtype: obj
+        """
+        adapter = IAdapter(self.context)
+        if self.name:
+            return adapter.get_object(IATDocument, depth=1, id=self.name)
+        else:
+            return adapter.get_object(IATDocument, depth=1)
 
     @memoize
     def description(self):
+        """Return description
+
+        :rtype: str
+        """
         return self.obj().Description()
 
     @memoize
     def text(self):
-        if hasattr(self.obj(), 'CookedBody'):
-            return self.obj().CookedBody()
+        """Return text
+
+        :rtype: str
+        """
+        return self.obj().CookedBody()
 
 
 class AboutViewlet(BaseDocumentViewlet):
     """Viewlet: abita.basetheme.viewlet.about"""
+    implements(IAboutViewlet)
     name = 'about'
-
-
-class TitleViewlet(BaseTitleViewlet):
-    """Viewlet to render title in head"""
-
-    def update(self):
-        super(TitleViewlet, self).update()
-        if IPloneSiteRoot.providedBy(self.context):
-            adapter = IAdapter(self.context)
-            head = adapter.get_brain(IATFolder, id="head", depth=1)
-            if head:
-                doc = adapter.get_brain(IATDocument, path=head.getPath(), depth=1)
-                if doc and doc.Title:
-                    self.site_title = doc.Title
-                elif head.Title:
-                    self.site_title = head.Title
-
-
-class DublinCoreViewlet(BaseDublinCoreViewlet):
-    """Viewlet to render dublin core in head"""
-
-    def update(self):
-        super(DublinCoreViewlet, self).update()
-        if IPloneSiteRoot.providedBy(self.context):
-            adapter = IAdapter(self.context)
-            head = adapter.get_brain(IATFolder, id="head", depth=1)
-            if head:
-                items = dict(self.metatags)
-                doc = adapter.get_brain(IATDocument, path=head.getPath(), depth=1)
-                if doc and doc.Description:
-                    items['description'] = doc.Description
-                elif head.Description:
-                    items['description'] = head.Description
-
-                self.metatags = items.items()
