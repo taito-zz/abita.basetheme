@@ -4,8 +4,21 @@ abita.basetheme
 
 abita.basetheme is base theme package for ABITA and Santa site.
 
+.. image:: https://secure.travis-ci.org/taito/abita.basetheme.png
+    :target: http://travis-ci.org/taito/abita.basetheme
+
+Currently tested with
+---------------------
+
+* Plone-4.3.6 with Python-2.7.10 [taito]
+
 Changelog
 ---------
+
+0.6 ( 2015-07-17)
+=================
+
+- Add dependency to Products.CMFPlacefulWorkflow for test. [taito]
 
 0.5.1 (2013-06-07)
 ==================

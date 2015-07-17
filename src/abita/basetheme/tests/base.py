@@ -14,6 +14,8 @@ class AbitaBasethemeLayer(PloneSandboxLayer):
     def setUpZope(self, app, configurationContext):
         """Set up Zope."""
         # Load ZCML
+        import Products.CMFPlacefulWorkflow
+        self.loadZCML(package=Products.CMFPlacefulWorkflow)
         import abita.basetheme
         self.loadZCML(package=abita.basetheme)
 
